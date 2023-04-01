@@ -1,0 +1,64 @@
+div.box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 351px;
+    height: 300px;
+    border: 2px solid #70707088;
+    border-radius: 50px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0, 0, 0.2);
+}
+div.header{
+    display: flex;
+    align-items: center;
+    height: 61px;
+    text-align: center;
+    background-color: #13569F;
+    color: white;
+    border-radius: 48px 48px 0px 0px;
+    font-family: 'HP Simplified Hans';
+    font-size: 22px;
+    margin-bottom: 40px;
+}
+span{
+   margin: auto;
+}
+div.input{
+    margin-top: 35px;
+}
+input{
+    width: 266px;
+    height: 28px;
+    background-color: #F7F7F7;
+    border-color: #70707088;
+}
+.cne{
+    margin-bottom: 30px;
+}
+div.cn{
+    margin-top: 35px;
+}
+.connexion:link, .connexion:visited{
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #13569F;
+    color: white;
+    font-family: 'HP Simplified Hans';
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: all .2s;
+
+}
+.connexion:hover{
+    transform: translate(0px, -3px);
+    box-shadow: 0 5px 10px rgba(0,0, 0, 0.3);
+}
+.connexion:active{
+    transform: translate(0px, 3px);
+    box-shadow: 0 2.5px 6px rgba(0,0, 0, 0.3);
+}

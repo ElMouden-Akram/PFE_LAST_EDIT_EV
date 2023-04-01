@@ -2,24 +2,29 @@
 
 namespace App\Controller;
 
+use App\Form\FinirInscripType;
 use App\Repository\UserRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use function PHPUnit\Framework\isNull;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
-use App\Form\FinirInscripType;
 
-
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
     #[Route('/home', name: 'app_home')]
-    public function Home_user(UserRepository $UserRep,Request $request,Security $security): Response
+    public function Home(UserRepository $UserRep,Request $request,Security $security): Response
     {
         //tester d'abord s'il l'utilisateur veut acceder a sa page → etre connecter:
         if($security->isGranted("IS_AUTHENTICATED_FULLY")){
-            // dump("hh");
+            //s'il n'est pas terminer son inscription:
+            /** @var \App\Entity\User $user */
+            $user=$this->getUser();
+            // dd($security->getUser());
+            // dd($this->getUser());
             //if il est connecter + il veut consulter sa propre page:
             //d'abord cherche sa data:
             // $etudiant = null;
@@ -50,7 +55,7 @@ class HomeController extends AbstractController
 
 
 
-        return $this->render('home/index.html.twig', [
+        return $this->render('profile/profile.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
@@ -74,7 +79,7 @@ class HomeController extends AbstractController
 
             }else{
                 //rediriger avec message error (plustard)
-                return $this->render('security/finirInscController.html.twig',['form'=>$form->createView()]);
+                return $this->render('security/finirInsc.html.twig',['form'=>$form->createView()]);
             }
         }
         else{

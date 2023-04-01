@@ -3,33 +3,67 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        
+        {# ↓🔥 remarque le fichier qui contient le css est placer dans "public/css/profile-style.css". source: https://symfony.com/doc/current/templates.html#linking-to-css-javascript-and-image-assets 🔥↓ #}
+        <link rel="stylesheet" href="{{ asset('css/profile-style.css') }}">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+            
         {% endblock %}
     </head>
     <body>
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  {% block navbar %}
+  {# {% set roles = app.user.getroles() %} #}
+  <header><a>Aidus</a></header>
+  <nav class="navigation">
+        <ul> 
+            <li><a href="{{ path('app_home') }}">{{ app.user.firstname | capitalize  }} {{ app.user.lastname }}</a></li>
+            <li><a href="{{ path('app_accueil') }}">Accueil</a></li>
+            {% if 'ROLE_LAURIAT' in app.user.getroles()  %}
+                <li><a href="#">Offres d'emploi</a></li>
+                <li><a href="#">Offres de stages</a></li>
+                <li><a href="#">Offres de formations</a></li>
+            {% endif %}
+            <li><a href="#">Entreprises</a></li>
+            <li><a href="#">Aides</a></li>
+            <li><a href="{{ path('app_logout') }}">Disconnect</a></li>
+        </ul>
+    </nav>
+    
+{# <nav class="navbar navbar-expand-sm bg-primary navbar-dark"> #}
   <!-- Links -->
-  <ul class="navbar-nav">
+  {# <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="#">Link 1</a>
+      <a class="nav-link" href="{{ path('app_home') }}">{{ app.user.firstname | capitalize  }} {{ app.user.lastname }}</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link 2</a>
+      <a class="nav-link" href="#">Offres de travaille</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Offres de stage</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Offres de formations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Aides</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ path('app_setting') }}">setting</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{ path('app_logout') }}">disconnect</a>
     </li>
-  </ul>
-
-</nav>
+  </ul> #}
+{# </nav> #}
+   {% endblock %}
         {# {% if app.user %}
         <div><a href="{{ path('app_logout') }}">deco</a></div>
         {% endif %} #}

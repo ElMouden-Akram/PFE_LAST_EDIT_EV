@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ app.user.username}}{% endblock %}
+{#
+{% block body %}
+
+{# {% if app.user %}
+    <div>hello asdasdasd {{ app.user.getRoles() }}</div>
+{% endif %} #}
+
+{# <style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/Users/akram/pfe/lastofus/GExams/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/Users/akram/pfe/lastofus/GExams/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
+    </ul>
+    <div>
+        Vous avez visiter notre page :{{ app.session.get('nbVisite') }}
+    </div>
+</div>
+{% endblock %} #}
+
+{% block stylesheets %}
+        
+{% endblock %}
+
+{% block body %}
+    <article class="basic">
+        <img style="border-radius: 50%; width: 80px;" src="https://cdn-icons-png.flaticon.com/512/21/21104.png" alt="photo de profile">
+        <h4>{{ app.user.firstname | capitalize  }} {{ app.user.lastname }}</h4>
+        <p>science mathematique et informatique</p>
+        <p>diplome?</p>
+    </article>
+    <article class="infosp">
+        <h2>Infos personnel</h2>
+        <a href="#"><img src="plus.png" alt="" class="plus"></a>
+        <a href="#"><img src="edit.png" alt="" class="edit"></a>
+        <p><b>CNE</b><span>xxxxxxxxxx</span></p>
+        <p><b>CNI</b><span>xxxxxxxxxx</span></p>
+        <p><b>SEXE</b><span>{{ app.user.CNI | capitalize  }}</span></p>
+        <p><b>NAISSANCE</b><span>xxxxxxxxxx</span></p>
+        <p><b>ADRESSE</b><span>{{ app.user.email | capitalize  }}</span></p>
+        <p><b>VILLE</b><span>xxxxxxxxxx</span></p>
+        <p><b>Telephone</b><span>{{ app.user.numTelephone | capitalize  }}</span></p>
+    </article>
+    <footer></footer>
+{% endblock %}

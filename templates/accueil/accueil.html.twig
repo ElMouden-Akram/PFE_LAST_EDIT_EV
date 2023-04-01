@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/espace-style.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section class="filtrage">
+    <p class="p-filre">Filtrage</p>
+        <input type="text" placeholder="Recherche par secteur d'activite">
+        <input type="text" placeholder="Recherche par region">
+        <input type="text" placeholder="Recherche par entreprise">
+    </section>
+    <article class="content">
+        <div>
+            <img src="./entreprise.jpg" alt="icon d'entreprise">
+            <h3>Titre d'emploi</h3>
+            <p class="date">date | <a href="#">nom d'entreprise</a></p>
+            <p>description</p>
+        </div>
+        <div></div>
+        <div></div>
+        </article>
+{% endblock %}

@@ -47,7 +47,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 30, nullable: true)]
     private ?string $email = null;
 
-    public function getId(): ?int
+    public function getIdUser(): ?int
     {
         return $this->id;
     }
@@ -80,8 +80,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        // guarantee every user at least has ROLE_E
+        $roles[] = 'ROLE_ETUDIANT';
 
         return array_unique($roles);
     }

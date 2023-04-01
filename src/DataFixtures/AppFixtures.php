@@ -20,11 +20,15 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $User = new User();
-        $User->setUsername("admin");
-        $password = $this->hasher->hashPassword($User,"admin");
+        $User->setUsername("akram");
+        $password = $this->hasher->hashPassword($User,"1234");
         $User->setPassword($password);
         $manager->persist($User);
 
         $manager->flush();
+        //💡 : use this command to execute this code and create data in database :
+        //utilisateur existant : `symfony console doctrine:fixtures:load --append`
+        // ndc : admin , mdp : admin
+        // mdc : akram , mdp : 1234
     }
 }

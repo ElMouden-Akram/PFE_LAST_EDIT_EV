@@ -51,7 +51,6 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        
         //pour le moment:
         // chaque fois un user est connecter j'insert dans sa session son id :(voici le code)
         // $id=$token->getUser();
@@ -59,6 +58,7 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
         //
         /** @var \App\Entity\User $user */
         $user = $token->getUser();
+        // dd($token);
         
         //si sa premier connection au site:
         if(!$user->getEmail()){
